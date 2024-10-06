@@ -15,6 +15,11 @@ int main(){
         zona.matrix[i] = (char*)malloc(4*sizeof(char));
     }
 
+    /*zona.matrix[0][0] = '-';
+    zona.matrix[0][1] = 'X';
+    zona.matrix[1][0] = '-';
+    zona.matrix[1][1] = 'X';*/
+
     zona.matrix[0][0] = 'X';
     zona.matrix[0][1] = 'X';
     zona.matrix[0][2] = '-';
@@ -36,6 +41,35 @@ int main(){
     zona.matrix[4][2] = 'X';
     zona.matrix[4][3] = 'X';
     
+
+    for(int i = 0; i < zona.height; i++){
+        for(int j = 0; j < zona.width; j++){
+            printf("%c", zona.matrix[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+
+    analyseMatrix(&zona, 2);
+
+    for(int i = 0; i < zona.height; i++){
+        for(int j = 0; j < zona.width; j++){
+            printf("%c", zona.matrix[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+
+    changeMatrix(&zona, 5);
+
+    for(int i = 0; i < zona.height; i++){
+        for(int j = 0; j < zona.width; j++){
+            printf("%c", zona.matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+
 
 
 

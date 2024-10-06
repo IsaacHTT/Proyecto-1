@@ -5,34 +5,39 @@
 
 int calculateArea(Zone *zone, int row, int column){
 
-    int size = 0;
-    if((*zone).matrix[column][row] == '-'){
+    printf("%d, %d\n", row, column);
 
-        (*zone).matrix[column][row] == 'P';
-        size++;
+    int area = 0;
+    if((*zone).matrix[row][column] == '-'){
+
+        (*zone).matrix[row][column] = 'P';
+        area++;
+
+        printf("%c\n", (*zone).matrix[row][column]);
 
         if(column + 1 < (*zone).width){
 
-            size += calculateArea(zone, row, column + 1);
+            area += calculateArea(zone, row, column + 1);
 
         }
         if(column - 1 >= 0){
 
-            size += calculateArea(zone, row, column -1);
+            area += calculateArea(zone, row, column - 1);
 
         }
         if(row + 1 < (*zone).height){
 
-            size += calculateArea(zone, row + 1, column);
+            area += calculateArea(zone, row + 1, column);
 
         }
         if(row - 1 >= 0){
 
-            size += calculateArea(zone, row - 1, column);
+            area += calculateArea(zone, row - 1, column);
 
         }
 
-        return size;
+        printf("%d\n", area);
+        return area;
 
     }
 
@@ -40,34 +45,34 @@ int calculateArea(Zone *zone, int row, int column){
 
 int isShelter(Zone *zone, int row, int column){
 
-    int size = 0;
-    if((*zone).matrix[column][row] == 'P'){
+    int area = 0;
+    if((*zone).matrix[row][column] == 'P'){
 
-        (*zone).matrix[column][row] == 'Q';
-        size++;
+        (*zone).matrix[row][column] = 'Q';
+        area++;
 
         if(column + 1 < (*zone).width){
 
-            size += calculateArea(zone, row, column + 1);
+            area += isShelter(zone, row, column + 1);
 
         }
         if(column - 1 >= 0){
 
-            size += calculateArea(zone, row, column -1);
+            area += isShelter(zone, row, column -1);
 
         }
         if(row + 1 < (*zone).height){
 
-            size += calculateArea(zone, row + 1, column);
+            area += isShelter(zone, row + 1, column);
 
         }
         if(row - 1 >= 0){
 
-            size += calculateArea(zone, row - 1, column);
+            area += isShelter(zone, row - 1, column);
 
         }
 
-        return size;
+        return area;
 
     }
 
@@ -99,6 +104,7 @@ void analyseMatrix(Zone *zone, int capacity){
 	}
 
     int max = findMax(zones, capacity);
+    printf("%d", max);
     int amountZones = countShelters(zones, capacity, max);
 
 }
